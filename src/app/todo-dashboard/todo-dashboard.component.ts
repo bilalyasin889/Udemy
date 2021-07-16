@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NgRedux, select } from 'ng2-redux'; 
-import { IAppState } from '../store'; 
-import { CLEAR_TODOS } from '../actions'; 
+import {NgRedux, select} from 'ng2-redux';
+import {CLEAR_TODOS} from '../actions';
+import {IAppState} from '../store';
 
 @Component({
   selector: 'app-todo-dashboard',
@@ -9,9 +9,9 @@ import { CLEAR_TODOS } from '../actions';
   styleUrls: ['./todo-dashboard.component.css']
 })
 export class TodoDashboardComponent {
-  @select() todos; 
-  @select() lastUpdate; 
-  
+  @select() todos;
+  @select() lastUpdate;
+
   constructor(private ngRedux: NgRedux<IAppState>) {
   }
 
