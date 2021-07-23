@@ -39,8 +39,8 @@
             class="dropdown-menu dropdown-menu-right">
             <a ngbDropdownItem routerLink="/my-orders">My Orders</a>
             <ng-container *ngIf="appUser.isAdmin">
-              <a ngbDropdownItem routerLink="/admin/products">Manage Orders</a>
-              <a ngbDropdownItem routerLink="/admin/orders">Manage Products</a>
+              <a ngbDropdownItem routerLink="/admin/orders">Manage Orders</a>
+              <a ngbDropdownItem routerLink="/admin/products">Manage Products</a>
             </ng-container>
             <a ngbDropdownItem routerLink="" (click)="logout()">Log Out</a>
           </div>
