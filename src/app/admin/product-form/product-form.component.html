@@ -61,13 +61,7 @@
     </div>
 
     <div class="col-md-6">
-      <div class="card" *ngIf="product.title">
-        <img class="card-img-top prod-img" [src]="product.imageUrl" *ngIf="product.imageUrl" alt="">
-        <div class="card-body">
-          <h4 class="card-title">{{product.title}}</h4>
-          <p>{{product.price | currency:'GBP':'symbol'}}</p>
-        </div>
-      </div>
+      <product-card [product]="product" [show-actions]="false"></product-card>
     </div>
   </div>
 </div>
