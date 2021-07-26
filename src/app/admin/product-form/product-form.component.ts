@@ -12,7 +12,7 @@ import {ShopProduct} from "../../models/shop-product";
 })
 export class ProductFormComponent {
   categories$;
-  product: any;
+  product: ShopProduct;
   id: any;
 
   constructor(private router: Router,
@@ -24,10 +24,10 @@ export class ProductFormComponent {
     this.product = new ShopProduct();
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) this.productService.get(this.id).pipe(take(1))
-      .subscribe(p => this.product = p);
+      .subscribe(p => this.product = p as ShopProduct);
   }
 
-  save(product: any) {
+  save(product: ShopProduct) {
     if(this.id) this.productService.update(this.id, product).then();
     else this.productService.create(product);
 

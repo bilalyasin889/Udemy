@@ -1,7 +1,8 @@
 
 export class ShopProduct {
+  key = '';
   title = '';
-  price = '';
+  price: number = 0;
   category = '';
   imageUrl = '';
 }

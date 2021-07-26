@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from "@angular/fire/database";
 import {map} from "rxjs/operators";
+import {ShopProduct} from "../models/shop-product";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ProductService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  create(product: any) {
+  create(product: ShopProduct) {
     this.db.list('/products').push(product);
   }
 
@@ -25,7 +26,7 @@ export class ProductService {
       .valueChanges();
   }
 
-  update(productId: any, product: any) {
+  update(productId: any, product: ShopProduct) {
     return this.db.object('/products/' + productId).update(product)
   }
 

@@ -1,0 +1,13 @@
+<div class="row g-0">
+  <div class="col-2 d-grid gap-2">
+    <button (click)="removeFromCart()"
+            class="btn btn-secondary">-</button>
+  </div>
+  <div class="col text-center footer-quantity">
+    {{ shoppingCart.getQuantity(id) }} In Cart
+  </div>
+  <div class="col-2 d-grid gap-2">
+    <button (click)="addToCart()"
+            class="btn btn-secondary">+</button>
+  </div>
+</div>

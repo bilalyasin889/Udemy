@@ -6,10 +6,12 @@
     </div>
 
     <div class="col">
-      <div class="row row-cols-2">
+      <div class="row row-cols-2" *ngIf="cart$ | async as cart">
         <ng-container *ngFor="let product of filteredProducts">
           <div class="col">
-            <product-card [product]="product.data"></product-card>
+            <product-card
+              [product]="product.data" [id]="product.id"
+              [shopping-cart]="cart"></product-card>
           </div>
         </ng-container>
       </div>
