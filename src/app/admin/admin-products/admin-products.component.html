@@ -1,16 +1,17 @@
+<h1 class="fw-bold">Products</h1>
 <p>
   <a type="button"
-  class="btn btn-primary"
-  routerLink="/admin/product-form">New Product</a>
+     class="btn btn-primary"
+     routerLink="/admin/product-form">New Product</a>
 </p>
 
 <div class="mat-elevation-z8 searchHeader">
-    <input matInput #query (keyup)="applyFilter(query.value)"
-           type="text" class="form-control searchInput" placeholder="Search...">
+  <input matInput #query (keyup)="applyFilter(query.value)"
+         type="text" class="form-control searchInput" placeholder="Search...">
 </div>
 
 <div class="mat-elevation-z8">
-  <table mat-table matSort [dataSource]="dataSource">
+  <table mat-table matSort [dataSource]="tableView.dataSource">
 
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
@@ -38,8 +39,8 @@
         </a>
       </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="tableView.displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableView.displayedColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>

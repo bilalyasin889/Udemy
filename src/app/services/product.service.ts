@@ -30,7 +30,7 @@ export class ProductService {
     return this.db.object('/products/' + productId).update(product)
   }
 
-  documentToDomainObject = (c: any) => {
+  private documentToDomainObject = (c: any) => {
     const data = c.payload.exportVal();
     const id = c.key;
     return {id, data};

@@ -11,6 +11,7 @@ import {UserService} from "./user.service";
 })
 export class AuthService {
   user$: Observable<any>;
+  userId!: any
 
   constructor(
     private userService: UserService,
@@ -33,9 +34,11 @@ export class AuthService {
   get appUser$(): Observable<any>  {
     return this.user$
       .pipe(switchMap(user => {
-        if (user) return this.userService.get(user.uid);
-
-        return of(null);
+        if (user) {
+          this.userId = user.uid;
+          return this.userService.get(user.uid);
+        }
+        else return of(null);
       }))
   }
 }
