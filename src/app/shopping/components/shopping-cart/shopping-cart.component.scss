@@ -1,8 +1,16 @@
-.quantity-col { width: 320px; }
-.price-col { width: 250px; }
+.prod-col { width: 270px;}
+.quantity-col { width: 250px; }
+.price-col { width: 270px; }
 .thumbnail {
   width: 80px;
   height: 80px;
   border-radius: 100%;
   object-fit: cover;
 }
+.card {
+  padding-bottom: 10px;
+  width: 80%;
+}
+.table { margin-bottom: 0;}
+tfoot { border-bottom-style: hidden;}
+.shopping-header{ padding-bottom: 10px;}
