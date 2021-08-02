@@ -6,7 +6,7 @@ import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
+import {HttpModule, Http, BaseRequestOptions, RequestOptions} from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -49,14 +49,11 @@ import {AdminAuthGuard} from './services/admin-auth-guard.service';
     AdminAuthGuard,
     AuthService,
     AuthHttp,
-    provideAuth({
-      headerName: 'Authorization',
-      headerPrefix: 'Bearer',
-      tokenName: 'token',
-      tokenGetter: (() => localStorage.getItem('token')),
-      globalHeaders: [{ 'Content-Type': 'application/json' }],
-      noJwtError: true
-    }),
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    },
 
     // For creating a mock back-end. You don't need these in a real app.
     fakeBackendProvider,
@@ -66,3 +63,14 @@ import {AdminAuthGuard} from './services/admin-auth-guard.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig({
+    headerName: 'Authorization',
+    headerPrefix: 'Bearer',
+    tokenName: 'token',
+    tokenGetter: (() => localStorage.getItem('token')),
+    globalHeaders: [{ 'Content-Type': 'application/json' }],
+    noJwtError: true
+  }), http, options);
+}
